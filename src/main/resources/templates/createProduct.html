@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<title>create Product</title>
+
+
+</head>
+
+<body>
+
+	<div class="container">
+		<h2>Product</h2>
+
+
+
+		<form method="post" enctype="multipart/form-data"
+			th:action="@{/product/create}" th:object="${productForm}">
+			<ul th:if="${#fields.hasErrors('*')}">
+				<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input
+					is incorrect</li>
+			</ul>
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="name">Name</label> <input type="text"
+						class="form-control" th:field="*{name}" id="name" name="name">
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group">
+					<label for="description">Description</label>
+
+					<textarea class="form-control" id="description"
+						th:field="*{description}" rows="3"></textarea>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="categry">Category</label> <input type="text"
+						class="form-control" th:field="*{category}" id="author"
+						name="author">
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label for="cover">Image</label> <input type="file"
+					class="form-control-file" id="image" th:field="*{image}">
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="isbn">price</label> <input type="text"
+						class="form-control" id="price" name="price" th:field="*{price}">
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="stock">Quantity</label> <input type="text"
+						class="form-control" id="quantity" name="quantity"
+						th:field="*{quantity}">
+				</div>
+			</div>
+
+
+			<button type="submit" class="btn btn-primary">Create Product</button>
+		</form>
+
+	</div>
+
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

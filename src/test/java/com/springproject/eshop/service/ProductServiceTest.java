@@ -35,4 +35,15 @@ public class ProductServiceTest {
 		when(productRepository.findAll()).thenReturn(products);
 		assertEquals(products.size(), productService.getAllProducts().size());
 	}
+
+	@Test
+	public void testProductIsCreated() {
+		Product product = new Product();
+		product.setName("name");
+		when(productRepository.save(product)).thenReturn(product);
+
+		assertEquals(product.getName(), productService.create(product).getName());
+
+	}
+
 }
