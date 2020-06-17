@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+
+.productImg{
+	height: 200px;
+}
+
+.card{
+	background-color:#c9f6ff;
+	width:200px;
+	height:400px;
+	}

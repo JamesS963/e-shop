@@ -13,3 +13,11 @@ insert into Authority(AUTHORITY_ID, ROLE)
 delete from User_Authority;
 insert into User_Authority(USER_ID, AUTHORITY_ID)
 			values(1,1),(2,1),(3,2),(4,2);
+			
+			
+			
+delete from Product;
+insert into Product(PRODUCT_ID,name,description,category,image,price,quantity)
+	values(1,'Milk','Fresh milk','Dairy',FILE_READ('src/main/resources/databaseImages/milk.jpg'),0.90,24),
+	(2,'Cheese','Delicious Cheese','Dairy',FILE_READ('src/main/resources/databaseImages/cheese.jpg'),3.00,12),
+	(3,'Bacon','Crispy bacon pre cooked','Meat and produce',FILE_READ('src/main/resources/databaseImages/bacon.jpg'),3.00,3);
