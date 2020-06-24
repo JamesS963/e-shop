@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-lg navbar-blue bg-light"
+	th:fragment="navbar">
+	<ul class="navbar-nav">
+		<li class="nav-item">
+		<a th:href="@{/login}" class="nav-link" sec:authorize="isAnonymous()">login</a>
+		</li>
+		<li class="nav-item">
+		<a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="nav-link">logout</a>
+		</li>
+		<li class="nav-item">
+		<a sec:authorize="hasRole('ROLE_EMPLOYEE')" th:href="@{/product/create}" class="nav-link">Create Product</a>
+		</li>
+	</ul>
+</nav>

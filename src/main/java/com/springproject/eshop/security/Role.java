@@ -3,7 +3,7 @@ package com.springproject.eshop.security;
 import org.springframework.security.core.GrantedAuthority;
 
 public enum Role implements GrantedAuthority {
-	ROLE_USER, ROLE_ADMIN;
+	ROLE_USER, ROLE_EMPLOYEE;
 
 	@Override
 	public String getAuthority() {

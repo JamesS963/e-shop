@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<title>create Product</title>
+
+
+</head>
+
+<body>
+
+	<div class="container">
+		<div th:insert="fragments/nav"></div>
+		<div
+			th:each="item: ${#authentication.getPrincipal().getBasket().getBasket()}">
+			<div>
+				<h2 th:text="${item.product.name}"></h2>
+				<p th:text="'Quantity ' + ${item.product.quantity}"></p>
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

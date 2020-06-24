@@ -2,6 +2,7 @@ package com.springproject.eshop.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,13 +12,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -30,7 +36,11 @@ public class User implements UserDetails {
 	private String username;
 	private String password;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@OneToOne()
+	@JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
+	private Basket basket;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "User_Authority", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "AUTHORITY_ID"))
 	private Set<Authority> authorities;
 
@@ -53,4 +63,5 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+
 }

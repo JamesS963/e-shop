@@ -1,6 +1,7 @@
 package com.springproject.eshop.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product create(Product product) {
 		return productRepository.save(product);
+	}
+
+	@Override
+	public Optional<Product> getProduct(Long id) {
+		return productRepository.findById(id);
 	}
 
 }
